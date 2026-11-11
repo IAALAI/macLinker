@@ -1,0 +1,86 @@
+{
+  "name": "maclinker-desktop",
+  "version": "0.3.1",
+  "private": true,
+  "description": "A desktop workspace for remote Macs",
+  "main": "dist/main/main.cjs",
+  "type": "module",
+  "author": "macLinker contributors",
+  "scripts": {
+    "dev": "node scripts/dev-desktop.mjs",
+    "build": "tsc --noEmit && vite build && node scripts/build-desktop.mjs",
+    "start": "node scripts/start-desktop.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:desktop": "playwright test",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,html}\" \"scripts/*.mjs\" \"*.ts\" package.json"
+  },
+  "dependencies": {
+    "@novnc/novnc": "^1.7.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "ssh2": "^1.17.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/ssh2": "^1.15.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.28.2",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.0",
+    "vite": "^8.3.7",
+    "vitest": "^5.1.0"
+  },
+  "build": {
+    "appId": "dev.maclinker.desktop",
+    "productName": "macLinker",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "npmRebuild": false,
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility",
+      "maintainer": "macLinker contributors",
+      "syncDesktopName": true
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "icon": "src/assets/icon.png"
+  },
+  "overrides": {
+    "minimatch@>=7.0.0 <11.0.1": "^11.0.5"
+  },
+  "desktopName": "maclinker.desktop"
+}

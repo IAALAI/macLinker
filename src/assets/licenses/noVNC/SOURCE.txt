@@ -1,0 +1,9 @@
+macLinker includes the unmodified noVNC 1.7.0 core library (MPL-2.0) and its bundled pako dependency.
+
+Source, copyright notices, and buildable originals:
+https://github.com/novnc/noVNC/tree/v1.7.0
+https://github.com/novnc/noVNC/archive/refs/tags/v1.7.0.tar.gz
+https://www.npmjs.com/package/@novnc/novnc/v/1.7.0
+
+Install the exact dependency with npm ci using macLinker package-lock.json. The original source is in node_modules/@novnc/novnc/.
+License texts and author notices accompany this file.

@@ -1,0 +1,13 @@
+/.test/
+/node_modules/
+/dist/
+/coverage/
+/.DS_Store
+/.env
+/.env.*
+!/.env.example
+*.log
+/build/
+/release/
+/test-results/
+/playwright-report/
